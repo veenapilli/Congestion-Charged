@@ -6,7 +6,9 @@ import java.io.OutputStream;
 import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.Properties;
-
+/*
+ * Test use of properties; specified in the SQL Class only
+ */
 public class MysqlConn{
 	private static String this_Name = " :: MySqlConn";
 	private Properties prop = null;

@@ -12,6 +12,8 @@ public class AccessProp {
 	private static String this_Name = " :: AccessProp";
 
 	private Properties prop = null;
+	
+
 	private OutputStream out = null;
 	private InputStream in = null;
 
@@ -19,7 +21,7 @@ public class AccessProp {
 		// TODO Auto-generated constructor stub
 		prop = new Properties();
 	}
-	protected boolean putProp(String fileName, String [] keys, String [] values, String comment){
+	public boolean putProp(String fileName, String [] keys, String [] values, String comment){
 		if(null == comment) 
 			comment = "";
 		if(null == fileName || fileName.equals("")){
@@ -42,10 +44,12 @@ public class AccessProp {
 		return true;
 	}
 
-	protected void getProp(String fileName){
+	public Properties getProp(String fileName){
+		Enumeration<?> en = null;
 		openReadProp(fileName);
-		displayData();
+		en = displayData();
 		closeReadFiles();
+		return prop; 
 	}
 
 	private void openStoreProp(String filename){
@@ -56,7 +60,7 @@ public class AccessProp {
 			System.out.println(ioe.getMessage()+ this_Name);
 		}
 	}
-	
+
 	private void openReadProp(String filename){
 		try{
 			//"dbConfig.properties"
@@ -65,7 +69,7 @@ public class AccessProp {
 			System.out.println(ioe.getMessage()+ this_Name);
 		}
 	}
-	
+
 	private void setData(String[] keys, String[] values, String comment){
 
 		try{
@@ -98,7 +102,7 @@ public class AccessProp {
 		}
 		return null;
 	}
-	
+
 	private void closeStoreFiles(){
 		if(null != out){
 			try{
@@ -108,7 +112,7 @@ public class AccessProp {
 			}
 		}	
 	}
-	
+
 	private void closeReadFiles(){
 		if(null != in){
 			try{
@@ -117,6 +121,9 @@ public class AccessProp {
 				System.out.println(ioe.getMessage()+ this_Name);
 			}
 		}	
+	}
+	public Properties getProp() {
+		return prop;
 	}
 
 }
